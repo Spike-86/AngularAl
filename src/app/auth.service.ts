@@ -47,6 +47,7 @@ export class AuthService {
 
         const jsonHeader = value.header;
 
+
         this.FIO = value.fio;
         this.header = jsonHeader;
 
