@@ -1,0 +1,31 @@
+header {
+  background-color: lightblue;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 90% 10%;
+}
+
+a {
+  margin: 0 10px;
+}
+
+a#logoutLink {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  justify-self: end;
+  margin: 0;
+}
+
+div#navigateButtons {
+  grid-row-start: 2;
+  grid-column-start: 1;
+}
+
+span.FIO {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  justify-self: end;
+}
+
+
