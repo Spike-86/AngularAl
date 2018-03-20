@@ -13,7 +13,7 @@ import { AboutGuard } from './about.guard';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { Md5 } from 'ts-md5/dist/md5';
-
+import { GlobalConfService} from './global-conf.service';
 
 @NgModule({
   declarations: [
@@ -29,12 +29,13 @@ import { Md5 } from 'ts-md5/dist/md5';
     NoopAnimationsModule,
     MatButtonModule,
     MatCheckboxModule
+
   ],
   exports: [
     MatButtonModule,
     MatCheckboxModule
   ],
-  providers: [AboutGuard, AuthGuard, AuthService],
+  providers: [AboutGuard, AuthGuard, AuthService, GlobalConfService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

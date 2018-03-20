@@ -4,20 +4,28 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { Md5 } from 'ts-md5/dist/md5';
+import { GlobalConfService} from './global-conf.service';
+
+interface IResponseLogin {
+  token: string;
+  header: string;
+  fio: string;
+  departmen_name: string;
+}
 
 @Injectable()
 export class AuthService {
-
-  md5 = new Md5();
-
+   md5 = new Md5();
    private FIO: string;
    private header: string;
    private logBool: boolean;
 
+
   private loginUrl = 'http://10.31.141.71:83/v1/auth/login';
   // private logoutUrl = "http://mysite2:83/v1/auth/logout";
+  private urlToFile;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private globConf: GlobalConfService) {
     // sessionStorage.setItem('Login', 'false');
     this.logBool = false;
   }
@@ -43,32 +51,58 @@ export class AuthService {
 
     const body = '{"login":"' + test + '","pass":"' + pass + '"}';
 
-  return this.http.post(this.loginUrl, body).map(value => {
+    if (this.globConf.getDebugMe()) {
+      console.log('server');
 
-        const jsonHeader = value.header;
+      return this.http.post<IResponseLogin>(this.loginUrl, body).map(value  => {
 
+          const resp: IResponseLogin = value;
 
-        this.FIO = value.fio;
-        this.header = jsonHeader;
+          const jsonHeader = resp.header;
+          this.FIO = resp.fio;
+          this.header = jsonHeader;
 
-      if (jsonHeader.length === 0) {
-        this.logBool = false;
-      } else {
-        this.logBool = true;
-      }
+          if (jsonHeader.length === 0) {
+            this.logBool = false;
+          } else {
+            this.logBool = true;
+          }
 
-      return this.logBool;
+          return this.logBool;
 
-      },
-      error => {
-        // error - объект ошибки
-        console.log(error);
+        },
+        error => {
+          // error - объект ошибки
+          console.log(error);
 
-        return this.logBool = false;
-      });
+          return this.logBool = false;
+        });
+    } else {
+      console.log('local');
+      return this.http.get<IResponseLogin>('./myFiles/login.json').map(value  => {
 
+          const resp: IResponseLogin = value;
 
+          const jsonHeader = resp.header;
+          this.FIO = resp.fio;
+          this.header = jsonHeader;
 
+          if (jsonHeader.length === 0) {
+            this.logBool = false;
+          } else {
+            this.logBool = true;
+          }
+
+          return this.logBool;
+
+        },
+        error => {
+          // error - объект ошибки
+          console.log(error);
+
+          return this.logBool = false;
+        });
+    }
   }
 
   logOut(): boolean {
