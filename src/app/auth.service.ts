@@ -5,21 +5,15 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { Md5 } from 'ts-md5/dist/md5';
 import { GlobalConfService} from './global-conf.service';
-
-interface IResponseLogin {
-  token: string;
-  header: string;
-  fio: string;
-  departmen_name: string;
-}
+import { IResponseLogin } from './templatesAPI/tempAPI';
 
 @Injectable()
+
 export class AuthService {
    md5 = new Md5();
    private FIO: string;
    private header: string;
    private logBool: boolean;
-
 
   private loginUrl = 'http://10.31.141.71:83/v1/auth/login';
   // private logoutUrl = "http://mysite2:83/v1/auth/logout";
@@ -78,8 +72,9 @@ export class AuthService {
           return this.logBool = false;
         });
     } else {
+
       console.log('local');
-      return this.http.get<IResponseLogin>('./myFiles/login.json').map(value  => {
+      return this.http.get<IResponseLogin>('./assets/login.json').map(value  => {
 
           const resp: IResponseLogin = value;
 

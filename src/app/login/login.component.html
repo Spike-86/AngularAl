@@ -2,9 +2,13 @@
   login works!
 </p>
 
-<!--<form>-->
-  <!--<input type="text" placeholder="Login">-->
-  <!--<input type="password" placeholder="123456">-->
-<!--</form>-->
+<form (ngSubmit)="logIn(ourForm)" #ourForm="ngForm">
+  <input type="text" placeholder="Login" name="name" [(ngModel)]="name">
+  <input type="password" placeholder="123456" name="password">
 
-<button (click)="logIn('123', '321')">Login</button>
+  <button (click)="logIn('123', '321')">Login</button>
+  <button type="submit">Submit</button>
+</form>
+
+
+
