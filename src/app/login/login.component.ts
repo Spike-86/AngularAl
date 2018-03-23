@@ -16,10 +16,22 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
+
+  passIn: string;
+  nameIn: string;
+
   constructor(private auth: AuthService, private router: Router) {}
 
-  logIn(form: NgForm) {
-    console.log(form.value);
+  logIn(e: any) {
+
+
+
+    const name = this.nameIn; // e.target[0].value;
+    const password = this.passIn; // e.target[1].value;
+
+    console.log(name);
+    console.log(password);
+
 
   // const ff =  this.auth.logIn(name, pass);
   //   ff.subscribe(data => {
@@ -33,6 +45,9 @@ export class LoginComponent implements OnInit {
   console.log('21312');
 
 
+  }
+  testIn(e: any) {
+    console.log(e.target);
   }
 
 
