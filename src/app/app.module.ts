@@ -13,7 +13,6 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { AboutGuard } from './about.guard';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
-import { Md5 } from 'ts-md5/dist/md5';
 import { GlobalConfService} from './global-conf.service';
 
 

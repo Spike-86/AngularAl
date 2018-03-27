@@ -14,39 +14,30 @@ export class AuthService {
    private FIO: string;
    private header: string;
    private logBool: boolean;
+   private token: string;
 
   private loginUrl = 'http://10.31.141.71:83/v1/auth/login';
-  // private logoutUrl = "http://mysite2:83/v1/auth/logout";
   private urlToFile;
 
   constructor(private http: HttpClient, private globConf: GlobalConfService) {
-    // sessionStorage.setItem('Login', 'false');
     this.logBool = false;
   }
 
   checkLogin(): boolean {
-
-    // const val = sessionStorage.getItem('Login');
-    //
-    // if (val === 'true') {
-    //   return tjis;
-    // } else {
-    //   return false;
-    // }
     return this.logBool;
   }
 
   logIn(name1: string, pass1: string): Observable<boolean>  {
 
-    const test = Md5.hashStr('test');
-    const pass = Md5.hashStr('test');
+    const name = Md5.hashStr(name1);
+    const pass = Md5.hashStr(pass1);
 
     sessionStorage.setItem('Login', 'true');
 
-    const body = '{"login":"' + test + '","pass":"' + pass + '"}';
+    const body = '{"login":"' + name + '","pass":"' + pass + '"}';
 
     if (this.globConf.getDebugMe()) {
-      console.log('server');
+      // console.log('server');
 
       return this.http.post<IResponseLogin>(this.loginUrl, body).map(value  => {
 
@@ -55,8 +46,11 @@ export class AuthService {
           const jsonHeader = resp.header;
           this.FIO = resp.fio;
           this.header = jsonHeader;
+          this.token = resp.token;
 
-          if (jsonHeader.length === 0) {
+          // console.log(this.token);
+
+          if (this.token.length === 0) {
             this.logBool = false;
           } else {
             this.logBool = true;
@@ -67,13 +61,13 @@ export class AuthService {
         },
         error => {
           // error - объект ошибки
-          console.log(error);
+          // console.log(error);
 
           return this.logBool = false;
         });
     } else {
 
-      console.log('local');
+      // console.log('local');
       return this.http.get<IResponseLogin>('./assets/login.json').map(value  => {
 
           const resp: IResponseLogin = value;
@@ -93,7 +87,7 @@ export class AuthService {
         },
         error => {
           // error - объект ошибки
-          console.log(error);
+          // console.log(error);
 
           return this.logBool = false;
         });

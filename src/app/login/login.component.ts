@@ -24,30 +24,29 @@ export class LoginComponent implements OnInit {
 
   logIn(e: any) {
 
-
-
     const name = this.nameIn; // e.target[0].value;
     const password = this.passIn; // e.target[1].value;
 
-    console.log(name);
-    console.log(password);
+    // console.log(name);
+    // console.log(password);
+
+    // this.auth.logIn(name, password);
 
 
-  // const ff =  this.auth.logIn(name, pass);
-  //   ff.subscribe(data => {
-  //       console.log('auth.logIn', data);
-  //       this.router.navigate(['/about']);
-  //     }
-  //   );
+  const ff =  this.auth.logIn(name, password);
+    ff.subscribe(data => {
+        // console.log('auth.logIn', data);
 
-    //  this.router.navigate(['/about']);
-
-  console.log('21312');
-
-
+        if (this.auth.checkLogin()) {
+          this.router.navigate(['/about']);
+        } else {
+          // console.log('неверные данные в авторизации');
+        }
+      }
+    );
   }
   testIn(e: any) {
-    console.log(e.target);
+    // console.log(e.target);
   }
 
 
