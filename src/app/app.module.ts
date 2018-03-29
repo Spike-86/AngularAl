@@ -14,6 +14,7 @@ import { AboutGuard } from './about.guard';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { GlobalConfService} from './global-conf.service';
+import { AsideComponent } from './aside/aside.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { GlobalConfService} from './global-conf.service';
     AppComponent,
     routingComponents,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,
@@ -40,4 +42,3 @@ import { GlobalConfService} from './global-conf.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export class PizzaPartyAppModule { }
