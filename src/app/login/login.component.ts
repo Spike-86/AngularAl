@@ -23,10 +23,9 @@ export class LoginComponent implements OnInit {
     const name = this.nameIn;
     const password = this.passIn;
 
-    const ff =  this.auth.logIn(name, password);
 
+  const ff =  this.auth.logIn(name, password);
     ff.subscribe(data => {
-
         if (this.auth.checkLogin()) {
           this.router.navigate(['/about']);
         } else {
@@ -34,6 +33,7 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
   ngOnInit() {
   }
 }
