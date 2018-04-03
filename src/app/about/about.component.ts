@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService, Typemsg } from '../messages.service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private msg: MessagesService) { }
 
   ngOnInit() {
+  }
+
+  addMsg() {
+    this.msg.addMessage({text: 'About test', type: Typemsg.INFO});
   }
 
 }

@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import { Md5 } from 'ts-md5/dist/md5';
 import { GlobalConfService} from './global-conf.service';
 import { IResponseLogin } from './templatesAPI/tempAPI';
-import { MessagesService, Typemsg } from './messages.service';
 
 @Injectable()
 
@@ -20,7 +19,7 @@ export class AuthService {
   private loginUrl = 'http://10.31.141.71:83/v1/auth/login';
   private urlToFile;
 
-  constructor(private http: HttpClient, private globConf: GlobalConfService, private msg: MessagesService) {
+  constructor(private http: HttpClient, private globConf: GlobalConfService) {
     this.logBool = false;
   }
 
@@ -53,10 +52,10 @@ export class AuthService {
 
           if (this.token.length === 0) {
             this.logBool = false;
-            this.msg.addMessage({text: 'Login false', type: Typemsg.ERROR});
+
           } else {
             this.logBool = true;
-            this.msg.addMessage({text: 'Login true', type: Typemsg.INFO});
+
           }
 
           return this.logBool;

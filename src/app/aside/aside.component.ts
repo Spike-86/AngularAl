@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService, Typemsg, IMessage } from '../messages.service';
 
 @Component({
   selector: 'app-aside',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideComponent implements OnInit {
 
-  constructor() { }
+  public messages: Array<IMessage> = [];
+
+  constructor(private msg: MessagesService) { }
+
 
   ngOnInit() {
+    this.messages = this.msg.getMessages();
   }
-
 }

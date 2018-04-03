@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 export enum Typemsg {INFO, ERROR, WARNING}
 
 
-interface IMessage {
+export interface IMessage {
   text: string;
   type: Typemsg;
 }
