@@ -14,6 +14,7 @@ export class MessagesService {
   private messages: Array<IMessage> = [];
   private countViewMsg = 10;
 
+
   constructor() { }
 
   addMessage(msg: IMessage) {
@@ -24,7 +25,17 @@ export class MessagesService {
 
   getMessages(): Array<IMessage> {
 
-    return this.messages;
+    return this.messages.slice(- 1 * this.countViewMsg);
   }
+
+  setCountMsg(count: number) {
+    if (count < 1 || count > 100) {
+      this.countViewMsg = 10;
+    } else {
+      this.countViewMsg = count;
+    }
+  }
+
+
 
 }

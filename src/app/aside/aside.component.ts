@@ -14,6 +14,15 @@ export class AsideComponent implements OnInit {
 
 
   ngOnInit() {
+    this.update();
+  }
+
+  setCountMsg(inCount) {
+    this.msg.setCountMsg(inCount);
+  }
+
+  update() {
+    console.log(this.msg.getMessages());
     this.messages = this.msg.getMessages();
   }
 }
