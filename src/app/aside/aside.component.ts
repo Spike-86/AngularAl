@@ -22,7 +22,6 @@ export class AsideComponent implements OnInit {
   }
 
   update() {
-    console.log(this.msg.getMessages());
     this.messages = this.msg.getMessages();
   }
 }

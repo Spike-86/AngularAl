@@ -18,14 +18,12 @@ export class MessagesService {
   constructor() { }
 
   addMessage(msg: IMessage) {
-
     this.messages.push(msg);
-
   }
 
   getMessages(): Array<IMessage> {
 
-    return this.messages.slice(- 1 * this.countViewMsg);
+    return this.messages;
   }
 
   setCountMsg(count: number) {
