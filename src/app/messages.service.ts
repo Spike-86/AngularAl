@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Guid } from 'guid-typescript';
 
 export enum Typemsg {INFO, ERROR, WARNING}
 
 
 export interface IMessage {
+  id: string;
   text: string;
   type: Typemsg;
-}
+  }
 
 @Injectable()
 export class MessagesService {
@@ -34,4 +36,7 @@ export class MessagesService {
     }
   }
 
+  getId(): string {
+    return Guid.create().toString();
+  }
 }

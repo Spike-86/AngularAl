@@ -1,8 +1,10 @@
 <h1>Панель сообщений</h1>
 <div>
-  <input #inpCount type="number">
+  <!--<label for inpCount>Количество отображаемых сообщений</label>-->
+    <input id="inpCount" #inpCount type="number">
+
   <button (click)="setCountMsg(inpCount.value)">Сохранить</button>
   <ul>
-    <li *ngFor="let message of msg.getMessages()">{{ message.text }}</li>
+    <li *ngFor="let message of msg.getMessages();" [attr.id]="message.id">{{ message.text }}</li>
   </ul>
 </div>

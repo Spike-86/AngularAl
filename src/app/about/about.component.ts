@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   }
 
   addMsg() {
-    this.msg.addMessage({text: 'About test', type: Typemsg.INFO});
+    this.msg.addMessage({text: 'About test', type: Typemsg.INFO, id: this.msg.getId()});
   }
 
 }

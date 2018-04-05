@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
 
     this.auth.logIn(name, password).subscribe(data => {
         if (this.auth.checkLogin()) {
-          this.msg.addMessage({text: 'Login true', type: Typemsg.INFO});
+          this.msg.addMessage({text: 'Login true', type: Typemsg.INFO, id: this.msg.getId()});
           this.router.navigate(['/about']);
         } else {
-          this.msg.addMessage({text: 'Login false', type: Typemsg.ERROR});
+          this.msg.addMessage({text: 'Login false', type: Typemsg.ERROR, id: this.msg.getId()});
         }
       });
   }
