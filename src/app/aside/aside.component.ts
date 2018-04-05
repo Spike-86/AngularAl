@@ -10,18 +10,15 @@ export class AsideComponent implements OnInit {
 
   public messages: Array<IMessage> = [];
 
-  constructor(private msg: MessagesService) { }
+  constructor(public msg: MessagesService) { }
 
 
   ngOnInit() {
-    this.update();
+    this.messages = this.msg.getMessages();
   }
 
   setCountMsg(inCount) {
     this.msg.setCountMsg(inCount);
   }
 
-  update() {
-    this.messages = this.msg.getMessages();
-  }
 }

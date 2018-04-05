@@ -12,18 +12,18 @@ export interface IMessage {
 export class MessagesService {
 
   private messages: Array<IMessage> = [];
+  private messagesEdited: Array<IMessage> = [];
   private countViewMsg = 10;
-
 
   constructor() { }
 
   addMessage(msg: IMessage) {
     this.messages.push(msg);
+    this.getMessages();
   }
 
   getMessages(): Array<IMessage> {
-
-    return this.messages;
+    return this.messagesEdited = this.messages.slice(- 1 * this.countViewMsg);
   }
 
   setCountMsg(count: number) {
@@ -33,7 +33,5 @@ export class MessagesService {
       this.countViewMsg = count;
     }
   }
-
-
 
 }

@@ -2,8 +2,7 @@
 <div>
   <input #inpCount type="number">
   <button (click)="setCountMsg(inpCount.value)">Сохранить</button>
-  <button (click)="update()">Обновить</button>
-  <ul *ngIf="messages.length < 10">
-    <li *ngFor="let msg of messages">{{msg.text}}</li>
+  <ul>
+    <li *ngFor="let message of msg.getMessages()">{{ message.text }}</li>
   </ul>
 </div>

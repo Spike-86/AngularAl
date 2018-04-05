@@ -17,7 +17,6 @@ import { GlobalConfService} from './global-conf.service';
 import { AsideComponent } from './aside/aside.component';
 import { MessagesService } from './messages.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
