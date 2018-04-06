@@ -10,12 +10,17 @@ h1 {
 
 ul {
   list-style-type: none;
+
 }
 
-li::after {
-  content: "X";
-  display: inline-block;
-  margin-left: 10px;
+li {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 90% 1fr;
+}
+
+li span {
+  text-align: center;
 }
 
 input[type=number] {

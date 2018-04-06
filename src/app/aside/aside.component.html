@@ -5,6 +5,6 @@
 
   <button (click)="setCountMsg(inpCount.value)">Сохранить</button>
   <ul>
-    <li *ngFor="let message of msg.getMessages();" [attr.id]="message.id">{{ message.text }}</li>
+    <li *ngFor="let message of msg.getMessages();" [attr.id]="message.id">{{ message.text + message.id}} <span (click)="deleteMsg(message.id)">X</span></li>
   </ul>
 </div>

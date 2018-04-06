@@ -21,4 +21,9 @@ export class AsideComponent implements OnInit {
     this.msg.setCountMsg(inCount);
   }
 
+  deleteMsg(id: string) {
+    console.log(id);
+    this.msg.deleteMsg(id);
+  }
+
 }

@@ -21,7 +21,7 @@ export class MessagesService {
 
   addMessage(msg: IMessage) {
     this.messages.push(msg);
-    this.getMessages();
+    // this.getMessages();
   }
 
   getMessages(): Array<IMessage> {
@@ -38,5 +38,12 @@ export class MessagesService {
 
   getId(): string {
     return Guid.create().toString();
+  }
+
+  deleteMsg(id) {
+   const index = this.messages.map(function(x) {
+     return x.id; }).indexOf(id);
+   this.messages.splice(index, 1);
+   console.log(this.messages);
   }
 }
