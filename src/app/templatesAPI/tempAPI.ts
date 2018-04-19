@@ -5,5 +5,11 @@ export interface IResponseLogin {
   departmen_name: string;
 }
 
-
-
+export interface IModificationList {
+  description: string;
+  dt_create: string;
+  dt_plan: string;
+  id: string;
+  name: string;
+  user_create: string;
+}

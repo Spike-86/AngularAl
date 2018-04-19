@@ -16,6 +16,8 @@ import { AuthService } from './auth.service';
 import { GlobalConfService} from './global-conf.service';
 import { AsideComponent } from './aside/aside.component';
 import { MessagesService } from './messages.service';
+import { ModificationListService } from './modification/modification-list.service';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,6 @@ import { MessagesService } from './messages.service';
     HeaderComponent,
     FooterComponent,
     AsideComponent
-
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,7 @@ import { MessagesService } from './messages.service';
     MatButtonModule,
     MatCheckboxModule
   ],
-  providers: [AboutGuard, AuthGuard, AuthService, GlobalConfService, MessagesService],
+  providers: [AboutGuard, AuthGuard, AuthService, GlobalConfService, MessagesService, ModificationListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

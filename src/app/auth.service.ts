@@ -16,9 +16,6 @@ export class AuthService {
    private logBool: boolean;
    private token: string;
 
-  private loginUrl = 'http://10.31.141.71:83/v1/auth/login';
-  private urlToFile;
-
   constructor(private http: HttpClient, private globConf: GlobalConfService) {
     this.logBool = false;
   }
@@ -36,19 +33,16 @@ export class AuthService {
 
     const body = '{"login":"' + name + '","pass":"' + pass + '"}';
 
-    if (this.globConf.getDebugMe()) {
-      // console.log('server');
+    if (this.globConf.getDebugMe() === true) {
 
-      return this.http.post<IResponseLogin>(this.loginUrl, body).map(value  => {
+      return this.http.post<IResponseLogin>(this.globConf.getUrl('pathToLogin'), body).map(value  => {
 
           const resp: IResponseLogin = value;
-
           const jsonHeader = resp.header;
+
           this.FIO = resp.fio;
           this.header = jsonHeader;
           this.token = resp.token;
-
-          // console.log(this.token);
 
           if (this.token.length === 0) {
             this.logBool = false;
