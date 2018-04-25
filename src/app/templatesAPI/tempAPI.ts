@@ -5,7 +5,7 @@ export interface IResponseLogin {
   departmen_name: string;
 }
 
-export interface IModificationList {
+export interface IModification {
   description: string;
   dt_create: string;
   dt_plan: string;

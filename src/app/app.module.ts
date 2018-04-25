@@ -9,14 +9,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { AboutGuard } from './about.guard';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { GlobalConfService} from './global-conf.service';
 import { AsideComponent } from './aside/aside.component';
 import { MessagesService } from './messages.service';
-import { ModificationListService } from './modification/modification-list.service';
+import { ModificationListService } from './modification/modification.service';
+import { ModificationAddDialogComponent } from './modification-add-dialog/modification-add-dialog.component';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -25,22 +26,21 @@ import { ModificationListService } from './modification/modification-list.servic
     routingComponents,
     HeaderComponent,
     FooterComponent,
-    AsideComponent
+    AsideComponent,
+    ModificationAddDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
     FormsModule
   ],
   exports: [
-    MatButtonModule,
-    MatCheckboxModule
+    MaterialModule
   ],
   providers: [AboutGuard, AuthGuard, AuthService, GlobalConfService, MessagesService, ModificationListService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModificationAddDialogComponent]
 })
 export class AppModule { }
