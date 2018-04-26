@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+    <li>
+      <button (click)="addModification()">Add modification</button>
+    </li>
+  </ul>
+</nav>
+
+<p>
+  modification-active works!
+</p>
+
+<ul>
+  <li *ngFor="let item of modificationList"> {{ item.name }}</li>
+</ul>
