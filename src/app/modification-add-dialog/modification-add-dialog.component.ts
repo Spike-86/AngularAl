@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material';
+import { FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 
 
@@ -10,13 +11,37 @@ import {MatDialogRef} from '@angular/material';
 })
 export class ModificationAddDialogComponent implements OnInit {
 
-  constructor (private dialogRef: MatDialogRef<ModificationAddDialogComponent>) { }
+  // nameModification: string;
+  // descriptionModification: string;
+  // dataToStart: string;
+  form: FormGroup;
+
+  constructor (private dialogRef: MatDialogRef<ModificationAddDialogComponent>, private fb: FormBuilder) {
+    this.form = this.fb.group({
+      nameModification: '',
+      descriptionModification: '',
+      dataToStart: ''
+    });
+  }
 
   ngOnInit() {
   }
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  saveModification() {
+
+    console.log(JSON.stringify(this.form.value));
+
+    // console.log(this.nameModification, '-', this.dataToStart , '-', this.descriptionModification);
+    // if (this.nameModification && this.dataToStart) {
+    //   this.dialogRef.close('save');
+    // } else {
+    //   alert('не заполнены поля');
+    // }
+
   }
 
 }

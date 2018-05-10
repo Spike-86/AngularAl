@@ -1,5 +1,20 @@
-<p>
-  modification-add-dialog works!
-</p>
-<button (click)="saveModification()">Сохранить</button>
-<button (click)="closeDialog()">Отмена</button>
+<h2>Ввод новой модификации</h2>
+
+<form [formGroup]="form" (ngSubmit)="saveModification()">
+  <label for="name">Имя модификации</label>
+  <input type="text" id="name" formControlName="nameModification">
+
+  <label for="description">Описание модификации</label>
+  <input type="text" id="description" formControlName="descriptionModification">
+
+  <label for="dt_plan">Дата ввода модификации</label>
+  <input type="date" id="dt_plan" formControlName="dataToStart">
+
+  <div class="button-wrapper">
+    <button type="submit">Сохранить</button>
+    <button (click)="closeDialog()">Отмена</button>
+  </div>
+</form>
+
+
+

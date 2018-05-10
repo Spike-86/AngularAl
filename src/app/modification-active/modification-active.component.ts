@@ -38,7 +38,7 @@ export class ModificationActiveComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('closed');
+      console.log('closed', result);
     });
 
   }

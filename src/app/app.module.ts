@@ -18,6 +18,7 @@ import { MessagesService } from './messages.service';
 import { ModificationListService } from './modification/modification.service';
 import { ModificationAddDialogComponent } from './modification-add-dialog/modification-add-dialog.component';
 import { MaterialModule } from './material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MaterialModule
