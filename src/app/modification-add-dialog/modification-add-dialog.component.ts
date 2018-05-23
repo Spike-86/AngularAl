@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import { FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 
@@ -17,14 +17,14 @@ export class ModificationAddDialogComponent implements OnInit {
   form: FormGroup;
 
   constructor (private dialogRef: MatDialogRef<ModificationAddDialogComponent>, private fb: FormBuilder) {
-    this.form = this.fb.group({
-      nameModification: '',
-      descriptionModification: '',
-      dataToStart: ''
-    });
   }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      'nameModification': new FormControl('', [Validators.required, Validators.minLength(5)]),
+      'descriptionModification': new FormControl('', [Validators.required]),
+      'dataToStart': new FormControl()
+    });
   }
 
   closeDialog() {
@@ -43,5 +43,7 @@ export class ModificationAddDialogComponent implements OnInit {
     // }
 
   }
+
+  get nameModification() { return this.form.get('nameModification'); }
 
 }

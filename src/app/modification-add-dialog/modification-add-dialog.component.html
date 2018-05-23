@@ -1,14 +1,28 @@
 <h2>Ввод новой модификации</h2>
 
 <form [formGroup]="form" (ngSubmit)="saveModification()">
-  <label for="name">Имя модификации</label>
-  <input type="text" id="name" formControlName="nameModification">
+  <label for="nameModification">Имя модификации</label>
+  <input type="text" id="nameModification" formControlName="nameModification">
+
+  <div *ngIf="nameModification.invalid && (nameModification.dirty || nameModification.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="nameModification.errors.required">
+      Name is required.
+    </div>
+    <div *ngIf="nameModification.errors.minlength">
+      Name must be at least 5 characters long.
+    </div>
+
+  </div>
 
   <label for="description">Описание модификации</label>
   <input type="text" id="description" formControlName="descriptionModification">
 
   <label for="dt_plan">Дата ввода модификации</label>
   <input type="date" id="dt_plan" formControlName="dataToStart">
+
+
 
   <div class="button-wrapper">
     <button type="submit">Сохранить</button>
