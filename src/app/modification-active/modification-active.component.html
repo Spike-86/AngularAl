@@ -11,5 +11,5 @@
 </p>
 
 <ul>
-  <li *ngFor="let item of modificationList"> {{ item.name }}</li>
+  <li *ngFor="let item of modificationList"><button (click)="clickme(item)">Редактировать</button> {{ item.name }}</li>
 </ul>

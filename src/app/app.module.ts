@@ -18,8 +18,9 @@ import { MessagesService } from './messages.service';
 import { ModificationListService } from './modification/modification.service';
 import { ModificationAddDialogComponent } from './modification-add-dialog/modification-add-dialog.component';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ValidateMoreTodayDirective } from './validates/validate-more-today.directive';
+import { EditModificationComponent } from './edit-modification/edit-modification.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
     HeaderComponent,
     FooterComponent,
     AsideComponent,
-    ModificationAddDialogComponent
+    ModificationAddDialogComponent,
+    ValidateMoreTodayDirective,
+    EditModificationComponent
   ],
   imports: [
     BrowserModule,

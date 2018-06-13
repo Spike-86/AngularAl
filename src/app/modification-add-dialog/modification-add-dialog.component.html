@@ -19,8 +19,29 @@
   <label for="description">Описание модификации</label>
   <input type="text" id="description" formControlName="descriptionModification">
 
+  <div *ngIf="descriptionModification.invalid && (descriptionModification.dirty || descriptionModification.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="descriptionModification.errors.required">
+      Description is required.
+    </div>
+
+  </div>
+
   <label for="dt_plan">Дата ввода модификации</label>
-  <input type="date" id="dt_plan" formControlName="dataToStart">
+  <input type="date" id="dt_plan" appValidateMoreToday formControlName="dataToStart" >
+  <div *ngIf="dataToStart.invalid && (dataToStart.dirty || dataToStart.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="dataToStart.errors.required">
+      Date is required.
+    </div>
+
+    <div *ngIf="dataToStart.errors.dateValid">
+      Date is required.
+    </div>
+
+  </div>
 
 
 

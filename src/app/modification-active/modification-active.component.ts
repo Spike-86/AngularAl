@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModificationListService } from '../modification/modification.service';
 import { IModification } from '../templatesAPI/tempAPI';
 import { MessagesService } from '../messages.service';
@@ -16,7 +17,7 @@ export class ModificationActiveComponent implements OnInit {
   modificationList: Array<IModification> = [];
 
 
-  constructor(private mdfList: ModificationListService, private msg: MessagesService, public dialog: MatDialog) { }
+  constructor(private mdfList: ModificationListService, private msg: MessagesService, public dialog: MatDialog, private router: Router) { }
 
 
   ngOnInit() {
@@ -41,6 +42,11 @@ export class ModificationActiveComponent implements OnInit {
       console.log('closed', result);
     });
 
+  }
+
+  clickme(obj: IModification) {
+    console.log(obj);
+    this.router.navigate(['/editModification/' + obj.id]);
   }
 
 }
